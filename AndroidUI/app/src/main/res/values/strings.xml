@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Android UI</string>
+    <string name="txt_splash_assignment2">Assignment 2</string>
+    <string name="txt_login_account">Log in to your \naccount</string>
+    <string name="hint_login_email">E-mail</string>
+    <string name="hint_login_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_login_register">Don\'t have an account? REGISTER</string>
+    <string name="tv_welcome">Welcome,</string>
+    <string name="tv_information">Please provide your basic information</string>
+    <string name="et_name">Full Name</string>
+    <string name="et_gender">Gender</string>
+    <string name="et_dob">Date Of Birth</string>
+    <string name="et_usertype">Usertype</string>
+    <string name="et_email">Email</string>
+    <string name="et_occupation">Occupation</string>
+    <string name="et_password">Password</string>
+    <string name="tv_signin_span">Signin With Different Account?</string>
+    <string name="btn_continue">Countinue</string>
+    <string name="tv_otp_verification">OTP Verification</string>
+    <string name="tv_sent_your_number_via_sms">Enter the verification code \nsent your number via sms.</string>
+    <string name="btn_resend">Resend</string>
+    <string name="btn_otp_submit">Submit</string>
+    <string name="tv_WELCOME">Welcome to\nAndroid studio</string>
+    <string name="btn_logout">Log Out</string>
+
+</resources>
