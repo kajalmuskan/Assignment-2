@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Assignment3</string>
+    <string name="tv_assignment_3">Assignment-3</string>
+    <string name="tv_home">Home</string>
+    <string name="btn_add_student">Add Student</string>
+    <string name="et_student_name">Student name</string>
+    <string name="et_class">Class</string>
+    <string name="et_roll_no">Roll no</string>
+    <string name="tv_no_records_yet">No Records Yet</string>
+    <string name="err_enter_valid_input">Please enter valid input</string>
+    <string name="btn_dialog_view">View</string>
+    <string name="btn_dialog_update">Update</string>
+    <string name="btn_dialog_delete">Delete</string>
+    <string name="btn_sort_roll_no">Roll no.</string>
+    <string name="btn_sort_name">Name</string>
+    <string name="back_btn_view">Back</string>
+</resources>

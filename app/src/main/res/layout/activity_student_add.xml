@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.StudentAddActivity">
+  <include layout="@layout/toolbar"/>
+  <EditText
+      android:id="@+id/et_student_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/et_student_name"
+      android:textSize="@dimen/font_min"
+      android:background="@drawable/border"
+      android:layout_marginTop="@dimen/margin_medium"
+      android:textColor="@color/colorGreen"/>
+    <EditText
+        android:id="@+id/et_student_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/et_class"
+        android:background="@drawable/border"
+        android:layout_below="@id/et_student_name"
+        android:layout_marginTop="@dimen/margin_min"
+        android:textSize="@dimen/font_min"
+        android:textColor="@color/colorGreen"/>
+    <EditText
+        android:id="@+id/et_student_roll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/et_roll_no"
+        android:background="@drawable/border"
+        android:layout_below="@id/et_student_class"
+        android:textSize="@dimen/font_min"
+        android:layout_marginTop="@dimen/margin_min"
+        android:textColor="@color/colorGreen"/>
+    <Button
+        android:id="@+id/btn_addstudent_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add_student"
+        android:background="@drawable/border"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/font_min"
+        android:layout_marginTop="@dimen/margin_min"
+
+        android:layout_below="@id/et_student_roll"/>
+
+</RelativeLayout>

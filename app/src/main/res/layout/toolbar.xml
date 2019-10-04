@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@color/colorGreen">
+    <TextView
+        android:id="@+id/tv_student_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_home"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"/>
+    <ImageButton
+        android:id="@+id/imgbtn_studentlist_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sort"
+        android:background="@color/colorGreen"
+        android:layout_marginRight="@dimen/margin_min"
+        android:layout_toLeftOf="@id/imgbtn_studentlist_grid"/>
+
+    <ImageButton
+        android:id="@+id/imgbtn_studentlist_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/list"
+        android:background="@color/colorGreen"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
