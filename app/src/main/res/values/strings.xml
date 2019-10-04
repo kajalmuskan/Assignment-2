@@ -11,7 +11,18 @@
     <string name="btn_dialog_view">View</string>
     <string name="btn_dialog_update">Update</string>
     <string name="btn_dialog_delete">Delete</string>
-    <string name="btn_sort_roll_no">Roll no.</string>
+    <string name="btn_sort_roll_no">Roll no</string>
     <string name="btn_sort_name">Name</string>
     <string name="back_btn_view">Back</string>
+    <string name="view_student">View Student</string>
+    <string name="label_name"> Name:</string>
+    <string name="label_class">Class:</string>
+    <string name="label_roll">Roll no:</string>
+    <string name="err_enter_name">Please enter name</string>
+<string name="err_enter_class">Please enter class</string>
+    <string name="err_enter_roll">Please enter roll no</string>
+    <string name="err_invalid_name">Invalid name</string>
+    <string name="err_invalid_class">Invalid class</string>
+    <string name="err_invalid_roll">Invalid roll no.</string>
+
 </resources>

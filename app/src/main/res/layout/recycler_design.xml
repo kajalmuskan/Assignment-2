@@ -3,16 +3,19 @@
     android:id="@+id/linear_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border"
     android:layout_gravity="center_horizontal"
-    android:orientation="vertical">
+    android:layout_marginTop="@dimen/padding_min"
+    android:background="@drawable/border"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_min">
 
     <TextView
         android:id="@+id/tv_rv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/font_min"
 
         />
 
@@ -20,8 +23,9 @@
         android:id="@+id/tv_rv_class"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/font_min"
 
         />
 
@@ -29,8 +33,9 @@
         android:id="@+id/tv_rv_roll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/colorGreen"
+        android:textSize="@dimen/font_min"
 
         />
 </LinearLayout>

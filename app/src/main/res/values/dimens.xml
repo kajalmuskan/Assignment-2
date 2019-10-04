@@ -4,4 +4,8 @@
     <dimen name="margin_max">150dp</dimen>
     <dimen name="margin_medium">50dp</dimen>
     <dimen name="font_min">20sp</dimen>
+    <dimen name="font_medium">30sp</dimen>
+    <dimen name="padding_large">50dp</dimen>
+    <dimen name="margin_large">70dp</dimen>
+    <dimen name="padding_min">7dp</dimen>
 </resources>

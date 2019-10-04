@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@drawable/common_et_color"
     tools:context=".activity.SplashActivity">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/tv_assignment_3"
         android:textColor="@color/colorGreen"
+        android:textSize="@dimen/font_medium"
         android:background="@drawable/border"
 
         />

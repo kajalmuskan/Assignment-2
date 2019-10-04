@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <menu xmlns:android="http://schemas.android.com/apk/res/android">
-        <item
-            android:id="@+id/sort_name"
-            android:title="@string/btn_sort_name" />
-        <item
-            android:id="@+id/sort_roll"
-            android:title="@string/btn_sort_roll_no"/>
-    </menu>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sort_name"
+        android:title="@string/btn_sort_name" />
+    <item
+        android:id="@+id/sort_roll"
+        android:title="@string/btn_sort_roll_no" />
+</menu>

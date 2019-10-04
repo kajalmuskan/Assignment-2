@@ -2,6 +2,7 @@ package com.example.assignment3.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +12,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -26,7 +29,7 @@ import java.util.Comparator;
 
 public class StudentRecordActivity extends AppCompatActivity implements StudentListAdapter.ItemClicked {
     Button btnAddStudent;
-    ImageButton imgbtnSort, imgbtnListGrid;
+    ImageButton imgbtnSort, imgbtnList, imgbtnGrid;
     RecyclerView recyclerView;
     TextView tvBlankList;
     RecyclerView.Adapter studentListAdapter;
@@ -40,19 +43,82 @@ public class StudentRecordActivity extends AppCompatActivity implements StudentL
         setContentView(R.layout.activity_student_record);
         btnAddStudent = findViewById(R.id.btn_add_student);
         imgbtnSort = findViewById(R.id.imgbtn_studentlist_sort);
-        imgbtnListGrid = findViewById(R.id.imgbtn_studentlist_grid);
+        imgbtnList = findViewById(R.id.imgbtn_list);
+        imgbtnGrid = findViewById(R.id.imgbtn_grid);
         recyclerView = findViewById(R.id.recycleView);
         tvBlankList = findViewById(R.id.tv_blank_list);
 
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(StudentRecordActivity.this);
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(StudentRecordActivity.this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         studentListAdapter = new StudentListAdapter(studentListModel, this);
         recyclerView.setAdapter(studentListAdapter);
+
         studentListAdapter.notifyDataSetChanged();
+        // imgbtnGrid.setVisibility(View.INVISIBLE);
+
+        imgbtnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgbtnList.setVisibility(View.INVISIBLE);
+                imgbtnGrid.setVisibility(View.VISIBLE);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(StudentRecordActivity.this, 2);
+                recyclerView.setLayoutManager(gridLayoutManager);
+            }
+        });
+
+        imgbtnGrid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgbtnGrid.setVisibility(View.INVISIBLE);
+                imgbtnList.setVisibility(View.VISIBLE);
+                recyclerView.setLayoutManager(linearLayoutManager);
+            }
+        });
 
 
+        //button for sorting of  data either name or roll.
+        imgbtnSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(StudentRecordActivity.this, imgbtnSort);
+                popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.sort_name:
+                                Collections.sort(studentListModel, new Comparator<StudentListModel>() {
+                                    @Override
+                                    public int compare(StudentListModel n1, StudentListModel n2) {
+                                        return n1.getStudentName().compareToIgnoreCase(n2.getStudentName());
+                                    }
+                                });
+
+                                studentListAdapter.notifyDataSetChanged();
+                                return true;
+                            case R.id.sort_roll:
+                                Collections.sort(studentListModel, new Comparator<StudentListModel>() {
+                                    @Override
+                                    public int compare(StudentListModel r1, StudentListModel r2) {
+                                        String roll1 = String.valueOf(r1.getStudentRoll());
+                                        String roll2 = String.valueOf(r2.getStudentRoll());
+                                        return roll1.compareToIgnoreCase(roll2);
+                                    }
+                                });
+                                studentListAdapter.notifyDataSetChanged();
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popupMenu.show();
+            }
+
+
+        });
         //add student button
         btnAddStudent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,22 +129,8 @@ public class StudentRecordActivity extends AppCompatActivity implements StudentL
             }
         });
 
-        //button for popup data either name or roll.
-        imgbtnSort.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sortStudentList();
 
-            }
-
-
-        });
     }
-
-
-
-
-
 
 
     @Override
@@ -107,7 +159,34 @@ public class StudentRecordActivity extends AppCompatActivity implements StudentL
         Button btnUpdate = dialog.findViewById(R.id.btn_dialog_update);
         Button btnDelete = dialog.findViewById(R.id.btn_dialog_delete);
         dialog.show();
-//Delete Student details
+
+
+        //view details of student
+        btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(StudentRecordActivity.this, StudentAddActivity.class);
+                intent.putExtra("Code", 2);
+                intent.putExtra("Object", studentListModel.get(position));
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+
+        //update student detail
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StudentRecordActivity.this, StudentAddActivity.class);
+                intent.putExtra("Code", 3);
+                intent.putExtra("Object", studentListModel.get(position));
+                startActivityForResult(intent, 1);
+                dialog.dismiss();
+            }
+        });
+
+        //Delete Student details
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,64 +197,10 @@ public class StudentRecordActivity extends AppCompatActivity implements StudentL
             }
 
         });
-        //update student detail
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivityForResult(new Intent(StudentRecordActivity.this, StudentAddActivity.class), 2);
-            }
-        });
-        //view details of student
-        btnView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent i=new Intent(StudentRecordActivity.this,StudentAddActivity.class);
-                i.putExtra("Code",2);
-                i.putExtra("Object",studentListModel);
-                startActivity(i);
-                dialog.dismiss();
-            }
-        });
+
     }
-
-    private void sortStudentList() {
-
-            PopupMenu popupMenu=new PopupMenu(StudentRecordActivity.this,imgbtnSort);
-            popupMenu.getMenuInflater().inflate(R.menu.popup_menu,popupMenu.getMenu());
-            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    switch (item.getItemId()){
-                        case R.id.sort_name:
-                           Collections.sort(studentListModel, new Comparator<StudentListModel>() {
-                               @Override
-                               public int compare(StudentListModel n1, StudentListModel n2) {
-                                   return n1.getStudentName().compareToIgnoreCase(n2.getStudentName());
-                               }
-                           });
-
-                            studentListAdapter.notifyDataSetChanged();
-                            return true;
-                        case R.id.sort_roll:
-                            Collections.sort(studentListModel, new Comparator<StudentListModel>() {
-                                @Override
-                                public int compare(StudentListModel r1, StudentListModel r2) {
-                                    String roll1=String.valueOf(r1.getStudentRoll());
-                                    String roll2=String.valueOf(r2.getStudentRoll());
-                                    return roll1.compareToIgnoreCase(roll2);
-                                }
-                            });
-                            studentListAdapter.notifyDataSetChanged();
-                            return true;
-                        default:
-                            return false;
-                    }
-                }
-            });
-            popupMenu.show();
-        }
-    }
+}
 
 
 

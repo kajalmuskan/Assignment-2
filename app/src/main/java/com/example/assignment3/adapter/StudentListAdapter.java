@@ -22,13 +22,13 @@ import static androidx.recyclerview.widget.RecyclerView.*;
 
 public class StudentListAdapter extends Adapter<StudentListAdapter.MyViewHolder> {
 
-  private   ArrayList<StudentListModel> studentListModel;
+    private ArrayList<StudentListModel> studentListModel;
     private int position;
     public ItemClicked clickActivity;
 
-    public StudentListAdapter( ArrayList<StudentListModel> studentListModel,ItemClicked clickActivity) {
+    public StudentListAdapter(ArrayList<StudentListModel> studentListModel, ItemClicked clickActivity) {
         this.studentListModel = studentListModel;
-        this.clickActivity=clickActivity;
+        this.clickActivity = clickActivity;
 
     }
 
@@ -42,14 +42,12 @@ public class StudentListAdapter extends Adapter<StudentListAdapter.MyViewHolder>
     }
 
     @Override
-    public void onBindViewHolder( StudentListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(StudentListAdapter.MyViewHolder holder, int position) {
         holder.itemView.setTag((studentListModel.get(position)));
-        holder.tvRoll.setText("Roll No:"+String.valueOf(studentListModel.get(position).getStudentRoll()));
-        holder.tvname.setText("Name:"+String.valueOf(studentListModel.get(position).getStudentName()));
-        holder.tvclass.setText("Class:"+String.valueOf(studentListModel.get(position).getStudentClass()));
+        holder.tvRoll.setText("Roll No:" + String.valueOf(studentListModel.get(position).getStudentRoll()));
+        holder.tvname.setText("Name:" + String.valueOf(studentListModel.get(position).getStudentName()));
+        holder.tvclass.setText("Class:" + String.valueOf(studentListModel.get(position).getStudentClass()));
     }
-
-
 
 
     @Override
@@ -69,11 +67,11 @@ public class StudentListAdapter extends Adapter<StudentListAdapter.MyViewHolder>
             super(itemView);
             tvname = itemView.findViewById(R.id.tv_rv_name);
             tvclass = itemView.findViewById(R.id.tv_rv_class);
-            tvRoll=itemView.findViewById((R.id.tv_rv_roll));
+            tvRoll = itemView.findViewById((R.id.tv_rv_roll));
 
-            linearLayout=itemView.findViewById(R.id.linear_layout);
+            linearLayout = itemView.findViewById(R.id.linear_layout);
 
-            itemView.setOnClickListener(new View.OnClickListener(){
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     clickActivity.onItemClicked(studentListModel.indexOf(view.getTag()));
@@ -86,7 +84,8 @@ public class StudentListAdapter extends Adapter<StudentListAdapter.MyViewHolder>
         }
 
     }
-    public interface ItemClicked{
+
+    public interface ItemClicked {
         void onItemClicked(int position);
     }
 
